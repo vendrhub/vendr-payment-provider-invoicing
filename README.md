@@ -1,2 +1,3 @@
-# vendr-payment-provider-invoicing
-Invoicing Payment Provider for Vendr, the eCommerce solution for Umbraco v8+
+# Vendr Invoicing Payment Provider
+
+Invoicing Payment Provider for Vendr, the eCommerce package for Umbrao v8+
