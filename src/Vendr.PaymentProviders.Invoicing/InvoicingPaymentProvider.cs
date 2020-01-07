@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
+using Vendr.Core;
 using Vendr.Core.Models;
 using Vendr.Core.Web.Api;
+using Vendr.Core.Web.PaymentProviders;
 
-namespace Vendr.Core.Web.PaymentProviders
+namespace Vendr.PaymentProviders.Invoicing
 {
     [PaymentProvider("invoicing", "Invoicing", "Basic payment provider for payments that will be processed via an external invoicing system", Icon = "icon-invoice")]
     public class InvoicingPaymentProvider : PaymentProviderBase<InvoicingSettings>

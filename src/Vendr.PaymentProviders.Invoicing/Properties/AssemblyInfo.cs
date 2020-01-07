@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Vendr.PaymentProvider.Stripe")]
+[assembly: AssemblyTitle("Vendr.PaymentProviders.Invoicing")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Vendr.PaymentProvider.Stripe")]
+[assembly: AssemblyProduct("Vendr.PaymentProviders.Invoicing")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("54d75f3d-bd42-45e8-bc99-210a9ad71ceb")]
+[assembly: Guid("0296a4ef-31f5-46d4-9805-6d43f0af8d94")]
 
 // Version information for an assembly consists of the following four values:
 //

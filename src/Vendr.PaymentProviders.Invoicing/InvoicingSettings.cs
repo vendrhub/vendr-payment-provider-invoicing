@@ -1,4 +1,6 @@
-﻿namespace Vendr.Core.Web.PaymentProviders
+﻿using Vendr.Core.Web.PaymentProviders;
+
+namespace Vendr.PaymentProviders.Invoicing
 {
     public class InvoicingSettings
     {
