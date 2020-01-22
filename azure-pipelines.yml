@@ -11,11 +11,6 @@ trigger:
     include:
       - v*
 
-pr:
-  branches:
-    include:
-      - '*'
-
 variables:
   vmImageName: 'vs2017-win2016'
   nuGetOrgServiceCreds: 'NuGet.org (Vendr)'
