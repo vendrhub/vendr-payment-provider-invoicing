@@ -55,19 +55,18 @@ stages:
 
           steps:
           - task: NuGetCommand@2
-            displayName: 'Deploy to local feed'
+            displayName: 'Deploy to CD feed'
             inputs:
               command: 'push'
               packagesToPush: '$(Pipeline.Workspace)/BuildArtifacts/**/*.nupkg;!$(Pipeline.Workspace)/BuildArtifacts/**/*.snupkg'
               nuGetFeedType: 'internal'
-              publishVstsFeed: 'ce9b30d7-6ec0-472e-9a89-49c4cb53d9af'
+              publishVstsFeed: '576196d3-9f20-4a86-8fd6-b0d7428fe5ee/cfadaa44-aa4e-45d7-8303-91a38d020c50'
 
           - task: NuGetCommand@2
             displayName: 'Deploy to NuGet.org'
+            condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/tags/v'))
             inputs:
               command: push
               nuGetFeedType: external
               packagesToPush: '$(Pipeline.Workspace)/BuildArtifacts/**/*.nupkg;!$(Pipeline.Workspace)/BuildArtifacts/**/*.snupkg'
               publishFeedCredentials: '$(nuGetOrgServiceCreds)'
- 
-# condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/tags/v'))
