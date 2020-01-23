@@ -55,7 +55,7 @@ stages:
 
           steps:
           - task: NuGetCommand@2
-            displayName: 'Deploy to CD feed'
+            displayName: 'Deploy to unstable feed'
             inputs:
               command: 'push'
               packagesToPush: '$(Pipeline.Workspace)/BuildArtifacts/**/*.nupkg;!$(Pipeline.Workspace)/BuildArtifacts/**/*.snupkg'
