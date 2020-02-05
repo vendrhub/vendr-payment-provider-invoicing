@@ -19,9 +19,12 @@ namespace Vendr.PaymentProviders.Invoicing
         public override bool CanCapturePayments => true;
         public override bool FinalizeAtContinueUrl => true;
 
-        public override PaymentForm GenerateForm(OrderReadOnly order, string continueUrl, string cancelUrl, string callbackUrl, InvoicingSettings settings)
+        public override PaymentFormResult GenerateForm(OrderReadOnly order, string continueUrl, string cancelUrl, string callbackUrl, InvoicingSettings settings)
         {
-            return new PaymentForm(continueUrl, FormMethod.Post);
+            return new PaymentFormResult()
+            {
+                Form = new PaymentForm(continueUrl, FormMethod.Post)
+            };
         }
 
         public override string GetCancelUrl(OrderReadOnly order, InvoicingSettings settings)
@@ -42,9 +45,9 @@ namespace Vendr.PaymentProviders.Invoicing
             return settings.ContinueUrl;
         }
 
-        public override CallbackResponse ProcessCallback(OrderReadOnly order, HttpRequestBase request, InvoicingSettings settings)
+        public override CallbackResult ProcessCallback(OrderReadOnly order, HttpRequestBase request, InvoicingSettings settings)
         {
-            return new CallbackResponse
+            return new CallbackResult
             {
                 TransactionInfo = new TransactionInfo
                 {
@@ -56,14 +59,27 @@ namespace Vendr.PaymentProviders.Invoicing
             };
         }
 
-        public override ApiResponse CancelPayment(OrderReadOnly order, InvoicingSettings settings)
+        public override ApiResult CancelPayment(OrderReadOnly order, InvoicingSettings settings)
         {
-            return new ApiResponse(order.TransactionInfo.TransactionId, PaymentStatus.Cancelled);
+            return new ApiResult()
+            {
+                TransactionInfo = new TransactionInfoUpdate() {
+                    TransactionId = order.TransactionInfo.TransactionId,
+                    PaymentStatus = PaymentStatus.Cancelled
+                }
+            };
         }
 
-        public override ApiResponse CapturePayment(OrderReadOnly order, InvoicingSettings settings)
+        public override ApiResult CapturePayment(OrderReadOnly order, InvoicingSettings settings)
         {
-            return new ApiResponse(order.TransactionInfo.TransactionId, PaymentStatus.Captured);
+            return new ApiResult()
+            {
+                TransactionInfo = new TransactionInfoUpdate()
+                {
+                    TransactionId = order.TransactionInfo.TransactionId,
+                    PaymentStatus = PaymentStatus.Captured
+                }
+            };
         }
     }
 }
